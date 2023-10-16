@@ -48,7 +48,7 @@ class ProjectController extends Controller
     public function store(ProjectUpsertRequest $request)
     {
         $data = $request->validated(); // questa funzione ritorna i dati già validati da Laravel
-
+        
         // qui invoco la funzione generateSlug tramite il $this e gli passo il titolo dell'articolo per ppoter generare lo slug        
         $data["slug"] = $this->generateSlug($data['title']);
 

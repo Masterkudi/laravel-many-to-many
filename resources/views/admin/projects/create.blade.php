@@ -67,7 +67,8 @@
                 <input type="date" class="form-control" name="published_at">
             </div>
 
-            <a href="{{ route('admin.projects.index') }}" class="btn btn-primary">Salva</a>
+            <button type="submit">Salva
+            </button>
             <a href="{{ route('admin.projects.index') }}" class="btn btn-danger">Annulla</a>
         </form>
     </div>
