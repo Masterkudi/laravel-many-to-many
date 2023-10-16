@@ -13,7 +13,8 @@ class TypesTableSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(Faker $faker): void {
+    public function run(Faker $faker): void
+    {
         $types = ['FrontEnd', 'BackEnd', 'FullStack', 'Design', 'DevOps'];
 
         foreach ($types as $type) {

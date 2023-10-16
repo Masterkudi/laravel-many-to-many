@@ -4,7 +4,14 @@
     <div class="container border border-dark p-3">
         <h1>{{ $project->title }}</h1>
 
-        <span class="badge m-2" style="background-color: rgb({{ $project->type->color}})">{{ $project->type->name }}</span>
+        <span class="badge m-2" style="background-color: rgb({{ $project->type->color }})">{{ $project->type->name }}</span>
+
+        {{-- technologies --}}
+        <div>
+            @foreach ($project->technologies as $technology)
+                <div class="badge" style="background-color: rgb({{ $technology->color }})">{{ $technology->name }}</div>
+            @endforeach
+        </div>
 
         {{-- la funzione asset crea un link alla cartella public 
         che prende le immagini uploadate e le mette nella cartella storage --}}

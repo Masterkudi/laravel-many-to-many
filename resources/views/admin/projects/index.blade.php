@@ -16,7 +16,7 @@
                             </div>
                             <div class="card-body bg-white text-center">
                                 <div>{{ $project->title }}</div>
-                                <div><span class="badge" style="background-color: rgb({{ $project->type->color}})">{{ $project->type->name }}</span></div>
+                                <div><span class="badge" style="background-color: rgb({{ $project->type->color}})">{{ $project->type->type }}</span></div>
                                 <div>{{ $project->published_at?->format('d/m/Y H:i') }}</div>
                                 <div><a href="{{ $project->repository }}">
                                         <i class="fa-brands fa-github fa-2xl" style="padding: 2rem"></i></a>
@@ -24,7 +24,7 @@
                             </div>
                             <div class="d-flex justify-content-center">
                                 <div class="p-2">
-                                    <a href="{{ route('admin.projects.show', $project->slug) }}" class="btn btn-info">
+                                    <a href="{{ route('admin.projects.show', $project->slug) }}" class="btn btn-success">
                                         <i class="fa-solid fa-circle-info"></i></a>
                                 </div>
                                 <div class="p-2">
