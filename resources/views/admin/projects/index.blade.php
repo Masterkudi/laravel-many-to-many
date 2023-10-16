@@ -6,13 +6,13 @@
         <h3 class="mt-3">Lista dei miei Progetti</h3>
 
         <div class="projectsGallery">
-            <div class="row row-cols-6 g-4 justify-content-center flex-wrap-wrap">
+            <div class="row row-cols-5 g-4 justify-content-center flex-wrap-wrap">
                 @foreach ($projects as $project)
                     <div class="col p-4">
-                        <div class="card p-3">
+                        <div class="card p-1">
                             <div>
-                                <img src={{ asset('/storage/' . $project->image) }} class="img-thumbnail"
-                                    style="width: 300px">
+                                <img src={{ asset('/storage/' . $project->image) }}
+                                class="img-thumbnail" style="width: 200px">
                             </div>
                             <div class="card-body bg-white text-center">
                                 <div>{{ $project->title }}</div>

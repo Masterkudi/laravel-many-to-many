@@ -34,7 +34,7 @@
             </div>
 
 
-           {{-- <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label class="form-label">Tags</label>
                 <div>
                     @foreach ($tags as $tag)
@@ -67,8 +67,7 @@
                 <input type="date" class="form-control" name="published_at">
             </div>
 
-            <button type="submit">Salva
-            </button>
+            <button type="submit" class="btn btn-primary">Salva</button>
             <a href="{{ route('admin.projects.index') }}" class="btn btn-danger">Annulla</a>
         </form>
     </div>
