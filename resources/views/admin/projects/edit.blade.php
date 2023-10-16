@@ -23,31 +23,31 @@
 
             <div class="mb-3">
                 <label class="form-label" for="title_input">Titolo</label>
-                <input type="text" class="form-control" name="title" id="title_input" value{{ $project->title }}>
+                <input type="text" class="form-control" name="title" value="{{ old('title')}}" id="title_input" value{{ $project->title }}>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Tipologia</label>
-                <select class="form-select" name="type_id">
+                <select class="form-select" name="type_id" value="{{ old('type_id')}}">
                     @foreach ($types as $type)
-                        <option value="{{ $type->id }}" {{ $project->type_id === $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
+                        <option value="{{ $type->id }}" {{ $project->type_id === $type->id ? 'selected' : '' }}>{{ $type->type }}</option>
                     @endforeach
                 </select>
             </div>
 
             <div class="mb-3">
                 <label class="form-label" for="image_input">Immagine</label>
-                <input type="file" class="form-control" name="image" id="image_input" accept="image/*">
+                <input type="file" class="form-control" name="image" value="{{ old('image')}}" id="image_input" accept="image/*">
             </div>
 
             <div class="mb-3">
                 <label class="form-label" for="content_input">Contenuto</label>
-                <textarea class="form-control" name="body" id="content_input">{{ $project->body }}</textarea>
+                <textarea class="form-control" name="body" value="{{ old('body')}}" id="content_input">{{ $project->body }}</textarea>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Repository</label>
-                <input type="text" class="form-control" name="repository">
+                <input type="text" class="form-control" name="repository" value="{{ old('repository')}}">
             </div>
 
             <div class="mb-3">

@@ -28,7 +28,7 @@
                 <label class="form-label">Tipologia</label>
                 <select class="form-select" name="type_id">
                     @foreach ($types as $type)
-                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                        <option value="{{ $type->id }}">{{ $type->type }}</option>
                     @endforeach
                 </select>
             </div>
@@ -49,22 +49,22 @@
 
             <div class="mb-3">
                 <label class="form-label">Immagine</label>
-                <input type="file" accept="image/*" class="form-control" name="image">
+                <input type="file" accept="image/*" class="form-control" name="image" value="{{ old('image')}}">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Contenuto</label>
-                <textarea class="form-control" name="body"></textarea>
+                <textarea class="form-control" name="body" value="{{ old('body')}}"></textarea>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Repository</label>
-                <input type="text" class="form-control" name="repository">
+                <input type="text" class="form-control" name="repository" value="{{ old('repository')}}">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Data Pubblicazione</label>
-                <input type="date" class="form-control" name="published_at">
+                <input type="date" class="form-control" name="published_at" value="{{ old('published_at')}}">
             </div>
 
             <button type="submit" class="btn btn-primary">Salva</button>
