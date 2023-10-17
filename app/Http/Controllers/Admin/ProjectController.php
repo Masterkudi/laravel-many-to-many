@@ -64,8 +64,10 @@ class ProjectController extends Controller
         // semplifico il procedimento usando il Project::create invece di newProject(), fill() e save() eseguendoli in un unico comando
         $project = Project::create($data);
 
-        // genero l'attach dopo il create perché per funzionare ha bisogno dell'id del progetto
-        if(isset($data["technologies"])){
+        // genero l'attach dopo il create perché per funzionare ha bisogno dell'id del progetto.
+        // uso allo stesso tempo `key_exist e `ìsset`, questa condizione verificherà che la chiave esista nell'array
+        // e che sia impostata su un valore diverso da `null`.
+        if (key_exists('technologies', $data) && isset($data['technologies'])) {
             $project->technologies()->attach($data["technologies"]);
         }
 
@@ -119,6 +121,11 @@ class ProjectController extends Controller
             $data['image'] = $image_path;
         }
 
+        // assegnazione tecnologie
+        // il metodo attach creerà una relazione tra il singolo progetto
+        // e la lista delle tecnologie associate
+        $project->technologies()->sync($data['technologies']);
+
         $project->update($data);
 
         return redirect()->route('admin.projects.show', $project->slug);
@@ -140,6 +147,7 @@ class ProjectController extends Controller
             Storage::delete($project->image);
         }
 
+        $project->technologies()->detach();
         $project->delete();
 
         return redirect()->route("admin.projects.index");

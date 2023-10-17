@@ -1,10 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container border border-dark p-3">
+    <div class="container border border-dark p-3 mt-4 mb-4">
         <h1>{{ $project->title }}</h1>
 
-        <span class="badge m-2" style="background-color: rgb({{ $project->type->color }})">{{ $project->type->name }}</span>
+        <span class="badge mt-3 mb-3" style="background-color: rgb({{ $project->type->color }})">{{ $project->type->name }}</span>
+
+        <div>
+            Scritto da {{ $project->user->name }}
+        </div>
 
         {{-- technologies --}}
         <div>

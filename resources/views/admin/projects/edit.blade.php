@@ -3,7 +3,9 @@
 @section('content')
 
     <div class="container">
-        <h1>Modifica il Progetto</h1>
+        <div class="title m-4">
+            <h1>Modifica il Progetto</h1>
+        </div>
 
         {{-- Variabile $errors che va a ciclare su ogni errore e poi li stampa --}}
         @if ($errors->any())
@@ -23,29 +25,17 @@
 
             <div class="mb-3">
                 <label class="form-label" for="title_input">Titolo</label>
-                <input type="text" class="form-control" name="title" value="{{ old('title') }}" id="title_input"
-                    value{{ $project->title }}>
+                <input type="text" class="form-control" name="title" value="{{ $project->title }}">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Tipologia</label>
-                <select class="form-select" name="type_id" value="{{ old('type_id') }}">
+                <select class="form-select" name="type_id" value="{{ $project->type_id }}">
                     @foreach ($types as $type)
                         <option value="{{ $type->id }}" {{ $project->type_id === $type->id ? 'selected' : '' }}>
-                            {{ $type->type }}</option>
+                            {{ $type->name }}</option>
                     @endforeach
                 </select>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label" for="image_input">Immagine</label>
-                <input type="file" class="form-control" name="image" value="{{ old('image') }}" id="image"
-                    accept="image/*">
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label" for="content_input">Contenuto</label>
-                <textarea class="form-control" name="body" value="{{ old('body') }}" id="content_input">{{ $project->body }}</textarea>
             </div>
 
             <div class="mb-3">
@@ -55,7 +45,8 @@
                     @foreach ($technologies as $technology)
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" name="technologies[]"
-                                id="{{ $technology->slug }}" value="{{ $technology->id }}">
+                                id="{{ $technology->slug }}" value="{{ $technology->id }}"
+                                {{ $project->technologies->contains($technology) ? 'checked' : '' }}>
                             <label class="form-check-label" for="{{ $technology->slug }}">{{ $technology->name }}</label>
                         </div>
                     @endforeach
@@ -63,8 +54,27 @@
             </div>
 
             <div class="mb-3">
+                <label class="form-label">Immagine</label>
+                @if ($project->image)
+                    <img src="{{ asset('/storage/' . $project->image) }}" alt="" class="img-thumbnail"
+                        style="width: 100px">
+                @endif
+
+                <div class="input-group">
+                    <label class="btn btn-danger" type="button" id="inputGroupFileAddon04">
+                        <input type="file" class="form-control d-none" name="image" accept="image/*">Scegli</label>
+                    <input type="text" class="form-control" name="image_link">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="content_input">Contenuto</label>
+                <textarea class="form-control" name="body" id="content_input">{{ $project->body }}</textarea>
+            </div>
+
+            <div class="mb-3">
                 <label class="form-label">Repository</label>
-                <input type="text" class="form-control" name="repository" value="{{ old('repository') }}">
+                <input type="text" class="form-control" name="repository" value="{{ $project->repository }}">
             </div>
 
             <div class="mb-3">

@@ -23,16 +23,16 @@
                                         <i class="fa-brands fa-github fa-2xl" style="padding: 2rem"></i></a>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-center">
-                                <div class="p-2">
+                            <div class="d-flex justify-content-center w-100">
+                                <div class="m-1">
                                     <a href="{{ route('admin.projects.show', $project->slug) }}" class="btn btn-success">
                                         <i class="fa-solid fa-circle-info"></i></a>
                                 </div>
-                                <div class="p-2">
+                                <div class="m-1">
                                     <a href="{{ route('admin.projects.edit', $project->slug) }}" class="btn btn-warning">
                                         <i class="fa-solid fa-pen-to-square"></i></a>
                                 </div>
-                                <div class="p-2">
+                                <div class="m-1">
                                     <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST">
                                         @csrf()
                                         @method('DELETE')

@@ -3,7 +3,9 @@
 @section('content')
 
     <div class="container">
-        <h1>Nuovo Progetto</h1>
+        <div class="title m-4">
+            <h1>Nuovo Progetto</h1>
+        </div>
 
         {{-- Variabile $errors che va a ciclare su ogni errore e poi li stampa --}}
         @if ($errors->any())
@@ -28,19 +30,9 @@
                 <label class="form-label">Tipologia</label>
                 <select class="form-select" name="type_id">
                     @foreach ($types as $type)
-                        <option value="{{ $type->id }}">{{ $type->type }}</option>
+                        <option value="{{ $type->id }}">{{ $type->name }}</option>
                     @endforeach
                 </select>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Immagine</label>
-                <input type="file" accept="image/*" class="form-control" name="image" value="{{ old('image') }}">
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Contenuto</label>
-                <textarea class="form-control" name="body" value="{{ old('body') }}"></textarea>
             </div>
 
             <div class="mb-3">
@@ -58,13 +50,23 @@
             </div>
 
             <div class="mb-3">
+                <label class="form-label">Immagine</label>
+                <input type="file" accept="image/*" class="form-control" name="image">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Contenuto</label>
+                <textarea class="form-control" name="body"></textarea>
+            </div>
+
+            <div class="mb-3">
                 <label class="form-label">Repository</label>
-                <input type="text" class="form-control" name="repository" value="{{ old('repository') }}">
+                <input type="text" class="form-control" name="repository">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Data Pubblicazione</label>
-                <input type="date" class="form-control" name="published_at" value="{{ old('published_at') }}">
+                <input type="date" class="form-control" name="published_at">
             </div>
 
             <button type="submit" class="btn btn-primary">Salva</button>
