@@ -9,7 +9,7 @@
         {{-- technologies --}}
         <div>
             @foreach ($project->technologies as $technology)
-                <div class="badge" style="background-color: rgb({{ $technology->color }})">{{ $technology->name }}</div>
+                <div class="badge mb-3 mt-3" style="background-color: rgb({{ $technology->color }})">{{ $technology->name }}</div>
             @endforeach
         </div>
 

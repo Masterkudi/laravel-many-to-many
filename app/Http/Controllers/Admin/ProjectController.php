@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectUpsertRequest;
 use App\Models\Type;
 use App\Models\Project;
-use App\Models\Tag;
 use App\Models\Technology;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,11 +36,12 @@ class ProjectController extends Controller
 
     // CREATE FUNCTION
 
-    public function create()
-    {
-        $types = Type::all();
+    public function create() {
 
-        return view('admin.projects.create', compact("types"));
+        $types = Type::all();
+        $technologies = Technology::all();
+
+        return view("admin.projects.create", compact("types", "technologies"));
     }
 
     // STORE FUNCTION CON FUNZIONE SLUG
@@ -63,6 +63,11 @@ class ProjectController extends Controller
 
         // semplifico il procedimento usando il Project::create invece di newProject(), fill() e save() eseguendoli in un unico comando
         $project = Project::create($data);
+
+        // genero l'attach dopo il create perché per funzionare ha bisogno dell'id del progetto
+        if(isset($data["technologies"])){
+            $project->technologies()->attach($data["technologies"]);
+        }
 
         return redirect()->route('admin.projects.show', $project->slug); //->with('success', 'Project created succeffully.')
     }

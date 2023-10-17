@@ -19,7 +19,7 @@ class TypesTableSeeder extends Seeder
 
         foreach ($types as $type) {
             $new_type = new Type();
-            $new_type->name = $type;
+            $new_type->type = $type;
             $new_type->slug = Str::slug($new_type->name);
             $new_type->description = $faker->text(100);
             $new_type->color = $faker->rgbColor();

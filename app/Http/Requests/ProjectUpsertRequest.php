@@ -40,7 +40,7 @@ class ProjectUpsertRequest extends FormRequest
             'is_published' => 'nullable|boolean',
             // exists si assicura che l'id passato esista nella tabella categories
             'type_id' => 'nullable|exists:types,id',
-            "tags" => "nullable",
+            "technologies" => "nullable",
         ];
     }
 

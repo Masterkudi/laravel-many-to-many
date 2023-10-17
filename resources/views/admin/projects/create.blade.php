@@ -33,38 +33,38 @@
                 </select>
             </div>
 
-
-            {{-- <div class="mb-3">
-                <label class="form-label">Tags</label>
-                <div>
-                    @foreach ($tags as $tag)
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" name="tags[]" id="{{ $tag->slug }}"
-                                value="{{ $tag->id }}">
-                            <label class="form-check-label" for="{{ $tag->slug }}">{{ $tag->name }}</label>
-                        </div>
-                    @endforeach
-                </div>
-            </div> --}}
-
             <div class="mb-3">
                 <label class="form-label">Immagine</label>
-                <input type="file" accept="image/*" class="form-control" name="image" value="{{ old('image')}}">
+                <input type="file" accept="image/*" class="form-control" name="image" value="{{ old('image') }}">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Contenuto</label>
-                <textarea class="form-control" name="body" value="{{ old('body')}}"></textarea>
+                <textarea class="form-control" name="body" value="{{ old('body') }}"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Tecnologie utilizzate</label>
+
+                <div>
+                    @foreach ($technologies as $technology)
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="technologies[]"
+                                id="{{ $technology->slug }}" value="{{ $technology->id }}">
+                            <label class="form-check-label" for="{{ $technology->slug }}">{{ $technology->name }}</label>
+                        </div>
+                    @endforeach
+                </div>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Repository</label>
-                <input type="text" class="form-control" name="repository" value="{{ old('repository')}}">
+                <input type="text" class="form-control" name="repository" value="{{ old('repository') }}">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Data Pubblicazione</label>
-                <input type="date" class="form-control" name="published_at" value="{{ old('published_at')}}">
+                <input type="date" class="form-control" name="published_at" value="{{ old('published_at') }}">
             </div>
 
             <button type="submit" class="btn btn-primary">Salva</button>
