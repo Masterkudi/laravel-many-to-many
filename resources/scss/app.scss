@@ -1,6 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
 @import "@fortawesome/fontawesome-free/css/all.min.css";
 
+
 body {
     background: linear-gradient(to bottom, #7c0000, #ffdd00);
     height: 100vh; /* Imposta l'altezza al 100% del viewport height */
@@ -11,4 +12,3 @@ body {
     justify-content: center; /* Opzionale: Centra il contenuto orizzontalmente */
     align-items: center; /* Opzionale: Centra il contenuto verticalmente */
   }
-  
